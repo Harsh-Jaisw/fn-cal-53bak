@@ -9,13 +9,13 @@ function TrainSchedule() {
     },
   };
   axios.get("http://20.244.56.144/train/trains", config).then((res) => {
-    console.log(res.data);
+    setTrain(res.data);
   });
   return (
     <div>
       {train?.map((item) => {
         return (
-          <div  className="d-flex flex-wrap" style={{width:"64rem"}}>
+          <div  className="d-flex flex-wrap" style={{width:"64rem"}} onClick={()=>{navigate("/searchTrain"),{state:{trainId:item.trainNumber}} }}>
             <h1>Train Name {item.trainName}</h1>
             <h4>
               Departure : {item.departureTime.Hours}:
